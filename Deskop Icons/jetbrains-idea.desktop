@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=IntelliJ IDEA Ultimate Edition
+Icon=/home/anup/Softwares/idea-IU-231.9011.34/bin/idea.svg
+Exec="/home/anup/Softwares/idea-IU-231.9011.34/bin/idea.sh" %f
+Comment=Capable and Ergonomic IDE for JVM
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=jetbrains-idea
+StartupNotify=true

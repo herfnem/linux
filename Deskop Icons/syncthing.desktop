@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Syncthing UI
+GenericName=File synchronization UI
+Comment=Opens Syncthing's Web UI in the default browser (Syncthing must already be started).
+Exec=/home/anup/Software/syncthing-linux/syncthing -browser-only
+Icon=/home/anup/Downloads/Setup/icons/syncthing.png
+Terminal=false
+Type=Application
+Keywords=synchronization;interface;
+Categories=Network;FileTransfer;P2P
+
+[Desktop Action start-service-only]
+Name=Start Service Only
+Exec=/home/anup/Software/syncthing-linux/syncthing serve --no-browser --logfile=default

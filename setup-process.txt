@@ -1,0 +1,194 @@
+# Change SERVER from Software & Updates to MAIN SERVER.
+# Update System
+-------------------
+sudo apt update
+sudo apt upgrade
+___________________
+-------------------
+# Install Tweaks and Extension Manager
+sudo apt install gnome-tweaks git curl gnome-shell-extension-manager
+
+___________________
+-------------------
+# NodeJS [Recommended]
+Download from official website and add to HOME in .bashrc
+-------------------
+# NodeJS [Not Recommended]
+sudo apt install nodejs npm
+sudo npm install -g npm@latest
+sudo npm install -g yarn
+-------------------
+# Alternative
+curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+
+nvm install --lts
+___________________
+-------------------
+# Enable Click-to-minimize
+gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
+
+___________________
+-------------------
+# Extension Lists
+	User Themes
+	ArcMenu
+	App Icon Taskbar
+	Coverflow Alt-Tab
+	Date Menu Formatter
+	Blur my Shell
+	Rounded Window Corners
+	Internet Speed Monitor
+	Quick Settings Tweaker
+	Clipboard History
+	Tiling Assistant
+	Just Perfection
+	Extensions List
+	
+	* Pop Shell -- https://support.system76.com/articles/pop-shell/
+	
+___________________
+-------------------
+# Flutter PATH
+export PATH="/home/anup/flutter/bin:$PATH"
+___________________
+-------------------
+# Softwares
+Download Google Chrome, VS Code as .deb package and install them
+_____
+-----
+Video Player:
+Celluloid from Flatpak
+_____
+-----
+sudo apt install telegram-desktop
+_____
+-----
+https://discord.com/
+-----
+https://www.vmware.com/products/workstation-pro.html
+	-- https://phoenixnap.com/kb/install-vmware-workstation-ubuntu
+----
+https://itsfoss.com/microsoft-edge-linux/
+----
+https://www.spotify.com/us/download/linux/
+	-- https://spicetify.app/docs/getting-started
+----
+https://docs.flutter.dev/get-started/install/linux
+FLUTTER LINUX BUILD REQ:
+	-- sudo apt install clang ninja-build cmake pkg-config
+	-- sudo apt install libgtk-3-dev
+----
+https://wiki.winehq.org/Ubuntu
+----
+Timeshift
+	-- https://www.makeuseof.com/use-timeshift-backup-and-restore-linux-snapshots/
+----
+Web Apps
+	-- http://packages.linuxmint.com/pool/main/w/webapp-manager/
+----
+https://flathub.org/apps/details/com.usebottles.bottles
+----
+XDMan
+https://github.com/subhra74/xdm-experimental-binaries/tags
+----
+___________________
+-------------------
+** Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
+/etc/apt/trusted.gpg **
+# SOLUTIONS
+https://askubuntu.com/questions/1398344/apt-key-deprecation-warning-when-updating-system
+___________________
+-------------------
+$ Other Software SOURCES - Software & Updates
+http://dl.google.com/linux/chrome/deb/
+https://packages.microsoft.com/repos/edge/
+	Type: Binary
+	Distribution: stable
+	Components: main
+___________________
+-------------------
+# FLatpak Ubuntu Setup:
+https://flatpak.org/setup/Ubuntu
+_____________________________________________________________________
+---------------------------------------------------------------------
+# Edge Flags
+	-Tab Hover Card Images
+	edge://flags/#tab-hover-card-images  
+	
+	-Microsoft Edge Share Menu
+	edge://flags/#edge-share-menu
+	
+	-Show Windows 11 visual effects in title bar and toolbar	
+	edge://flags/#edge-visual-rejuv-mica
+
+	-Make Rounded Tabs feature available
+	edge://flags/#edge-visual-rejuv-rounded-tabs
+
+	-Enable Windows 11 Acrylic effect in menus
+	edge://flags/#edge-visual-rejuv-materials-menu
+_____________________________________________________________________
+---------------------------------------------------------------------
+# CUSTOMIZING TERMINAL
+curl -sS https://starship.rs/install.sh | sh
+add to ~/.bashrc: eval "$(starship init bash)"
+			  change ls -> ls -la
+
+
+Theme: https://draculatheme.com/gnome-terminal
+
+Gedit(not pre-installed on Ubuntu): https://draculatheme.com/gedit
+
+
+_____________________________________________________________________
+---------------------------------------------------------------------
+#SHORTCUTS
+
+Super+Shift+C -> Close Window
+Super+Enter -> Terminal
+Super+F -> File Manager
+Super+B -> Browser
+
+_____________________________________________________________________
+---------------------------------------------------------------------
+https://github.com/vinceliuice/WhiteSur-gtk-theme.git
+https://github.com/vinceliuice/WhiteSur-icon-theme.git
+
+./install.sh -m -t all -N glassy -l --round -i ubuntu --normal
+
+sudo ./tweaks.sh -g -f monterey
+
+_____________________________________________________________________
+---------------------------------------------------------------------
+#ICONS
+/home/USER_NAME/.local/share/applications
+
+/usr/share/applications
+_____________________________________________________________________
+---------------------------------------------------------------------
+Create Virtual Environment with:
+python3 -m venv venv
+
+And launch it with:
+source venv/bin/activate
+
+Flutter:
+flutter create --org com.yourdomain -t skeleton your_app_name
+_____________________________________________________________________
+---------------------------------------------------------------------
+
+https://github.com/NvChad/NvChad
+
+#For Ubuntu
+rofi -show drun -normal-window -steal-focus
+----
+
+
+For Theming: SPACE + T + H
+For Syntax Hyghlghtng: [on vim CLI]: TSInstall <language_name>
+For File Tree: Ctrl + N
+For File Navigation: SPACE + F + F
+For CheatSheet: SPACE + C + H
+For Window Navigation: Ctrl + [H, J, K, L]
+
+_____________________________________________________________________
+---------------------------------------------------------------------
