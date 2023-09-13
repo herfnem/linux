@@ -14,4 +14,4 @@ configuration{
     sidebar-mode: true;
 }
 
-@theme "/home/anup/.local/share/rofi/themes/catppuccin-mocha.rasi"
+@theme "~/.config/rofi/themes/catppuccin-mocha.rasi"
