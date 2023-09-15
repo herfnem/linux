@@ -2,6 +2,82 @@
 
 # Function to set up Zsh and install Oh-My-Zsh
 setup_zsh() {
+  while true; do
+    clear
+    echo "Install zsh and oh-my-zsh"
+    echo "1. Install zsh"
+    echo "2. Install oh-my-zsh"
+    echo "3. Back"
+
+    read -p "Enter your choice: " sub_choice
+
+    case $sub_choice in
+      1)
+        sudo apt update
+        sudo apt install -y zsh curl git
+
+        if [ $? -ne 0 ]; then
+          echo "Error: Failed to install Zsh and Oh My Zsh. Exiting."
+          exit 1
+        fi
+
+        read -n 1 -s -r -p "Press any key to continue..."
+        ;;
+      2)
+        # Add code for Sub-option 2 here
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+        # Change the default shell to Zsh
+        chsh -s $(which zsh)
+
+        if [ $? -ne 0 ]; then
+          echo "Error: Failed to change the default shell to Zsh. Exiting."
+          exit 1
+        fi
+
+        echo "Zsh has been set up. Please log out and log in again to use Zsh as your default shell."
+
+        # Ask the user if they want to copy .zshrc (default: yes)
+        read -p "Do you want to copy my .zshrc configuration file to your system? (Y/n): " choice
+        choice="${choice:-y}"  # Set to 'y' if user presses Enter
+        choice=${choice,,}     # Convert to lowercase for case-insensitive check
+
+        if [ "$choice" = "y" ]; then
+          cp backup/.zshrc ~/.zshrc
+          if [ $? -ne 0 ]; then
+            echo "Error: Failed to copy .zshrc. Exiting."
+            exit 1
+          fi
+
+          git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+          git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+          cp oh-my-zsh/anup.zsh-theme ~/.oh-my-zsh/themes/
+
+          if [ $? -ne 0 ]; then
+            echo "Error: Failed to copy additional Zsh files. Exiting."
+            exit 1
+          fi
+
+          echo ".zshrc file has been copied to your home directory."
+        else
+          echo "Skipping .zshrc file copy."
+        fi
+
+        read -n 1 -s -r -p "Press any key to continue..."
+        ;;
+      3)
+        break  # Return to the Main Menu
+        ;;
+      *)
+        echo "Invalid choice. Please try again."
+        ;;
+    esac
+  done
+
+
+
+
+
   echo "Setting up Zsh and installing oh-my-zsh..."
 
   # Install Zsh and Oh My Zsh
@@ -31,7 +107,7 @@ setup_zsh() {
   choice=${choice,,}     # Convert to lowercase for case-insensitive check
 
   if [ "$choice" = "y" ]; then
-    cp /backup/.zshrc ~/.zshrc
+    cp backup/.zshrc ~/.zshrc
     if [ $? -ne 0 ]; then
       echo "Error: Failed to copy .zshrc. Exiting."
       exit 1
@@ -39,7 +115,7 @@ setup_zsh() {
 
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-    cp /oh-my-zsh/anup.zsh-theme ~/.oh-my-zsh/themes/
+    cp oh-my-zsh/anup.zsh-theme ~/.oh-my-zsh/themes/
 
     if [ $? -ne 0 ]; then
       echo "Error: Failed to copy additional Zsh files. Exiting."
@@ -54,6 +130,7 @@ setup_zsh() {
 
 whitesur_theme() {
   echo "Installing WhiteSur GTK Theme..."
+  sudo apt install gnome-tweaks gnome-shell-extension-manager
   git clone https://github.com/vinceliuice/WhiteSur-gtk-theme.git
   cd WhiteSur-gtk-theme
 
