@@ -6,8 +6,9 @@ setup_zsh() {
     clear
     echo "Install zsh and oh-my-zsh"
     echo "1. Install zsh"
-    echo "2. Install oh-my-zsh"
-    echo "3. Back"
+    echo "2. Install oh-my-zsh [log out and log in again after this step]"
+    echo "3. Install my .zshrc config file"
+    echo "4. Back"
 
     read -p "Enter your choice: " sub_choice
 
@@ -36,7 +37,9 @@ setup_zsh() {
         fi
 
         echo "Zsh has been set up. Please log out and log in again to use Zsh as your default shell."
-
+        read -n 1 -s -r -p "Press any key to continue..."
+        ;;
+      3)
         # Ask the user if they want to copy .zshrc (default: yes)
         read -p "Do you want to copy my .zshrc configuration file to your system? (Y/n): " choice
         choice="${choice:-y}"  # Set to 'y' if user presses Enter
@@ -65,7 +68,7 @@ setup_zsh() {
 
         read -n 1 -s -r -p "Press any key to continue..."
         ;;
-      3)
+      4)
         break  # Return to the Main Menu
         ;;
       *)
