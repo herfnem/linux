@@ -134,6 +134,8 @@ setup_hyprland() {
         read -n 1 -s -r -p "Press any key to continue..."
         ;;
       3)
+        mkdir hyprland-files
+        cd hyprland-files
         wget https://github.com/hyprwm/Hyprland/releases/download/v0.29.1/source-v0.29.1.tar.gz
         tar -xvf source-v0.29.1.tar.gz
 
@@ -212,7 +214,7 @@ setup_hyprland() {
         chmod a+rw hyprland-source
         cd hyprland-source/
         sudo make install
-        cd ..
+        cd ../..
         read -n 1 -s -r -p "Press any key to continue..."
         ;;
       4)
