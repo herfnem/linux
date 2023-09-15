@@ -217,6 +217,7 @@ setup_hyprland() {
         ;;
       4)
         cp config/* ~/.config/
+        read -n 1 -s -r -p "Press any key to continue..."
         ;;
       5)
         break  # Return to the Main Menu
