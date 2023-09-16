@@ -1,5 +1,9 @@
 #!/bin/bash
 
+extra_packages() {
+  sudo apt install mpv git neofetch curl exa
+}
+
 # Function to set up Zsh and install Oh-My-Zsh
 setup_zsh() {
   while true; do
@@ -127,7 +131,7 @@ setup_hyprland() {
         read -n 1 -s -r -p "Press any key to continue..."
         ;;
       2)
-        sudo apt-get install -y meson wget build-essential ninja-build cmake-extras cmake gettext gettext-base fontconfig libfontconfig-dev libffi-dev libxml2-dev libdrm-dev libxkbcommon-x11-dev libxkbregistry-dev libxkbcommon-dev libpixman-1-dev libudev-dev libseat-dev seatd libxcb-dri3-dev libvulkan-dev libvulkan-volk-dev  vulkan-validationlayers-dev libvkfft-dev libgulkan-dev libegl-dev libgles2 libegl1-mesa-dev glslang-tools libinput-bin libinput-dev libxcb-composite0-dev libavutil-dev libavcodec-dev libavformat-dev libxcb-ewmh2 libxcb-ewmh-dev libxcb-present-dev libxcb-icccm4-dev libxcb-render-util0-dev libxcb-res0-dev libxcb-xinput-dev xdg-desktop-portal-wlr hwdata check libgtk-3-dev libsystemd-dev xwayland pamixer gsimplecal cava rofi waybar brightnessctl alacritty
+        sudo apt-get install -y meson wget build-essential ninja-build cmake-extras cmake gettext gettext-base fontconfig libfontconfig-dev libffi-dev libxml2-dev libdrm-dev libxkbcommon-x11-dev libxkbregistry-dev libxkbcommon-dev libpixman-1-dev libudev-dev libseat-dev seatd libxcb-dri3-dev libvulkan-dev libvulkan-volk-dev  vulkan-validationlayers-dev libvkfft-dev libgulkan-dev libegl-dev libgles2 libegl1-mesa-dev glslang-tools libinput-bin libinput-dev libxcb-composite0-dev libavutil-dev libavcodec-dev libavformat-dev libxcb-ewmh2 libxcb-ewmh-dev libxcb-present-dev libxcb-icccm4-dev libxcb-render-util0-dev libxcb-res0-dev libxcb-xinput-dev xdg-desktop-portal-wlr hwdata check libgtk-3-dev libsystemd-dev xwayland pamixer gsimplecal cava rofi waybar brightnessctl alacritty kitty dunst pulsemixer
         cd backup
         sudo cp 90-brightnessctl.rules /usr/lib/udev/rules.d/ 
         cd ..
@@ -218,7 +222,10 @@ setup_hyprland() {
         read -n 1 -s -r -p "Press any key to continue..."
         ;;
       4)
-        cp config/* ~/.config/
+        cp -r config/* ~/.config/
+        CURRENT_USER=$(whoami)
+        sudo gpasswd -a $CURRENT_USER video
+        sudo cp backup/90-brightnessctl.rules /usr/lib/udev/rules.d/
         read -n 1 -s -r -p "Press any key to continue..."
         ;;
       5)
@@ -235,26 +242,31 @@ setup_hyprland() {
 while true; do
   clear
   echo "Main Menu:"
-  echo "1. Install zsh and setup oh-my-zsh"
-  echo "2. Install WhiteSur GTK Theme"
-  echo "3. Set up Hyprland"
-  echo "4. Exit"
+  echo "1. Install Extra Packages"
+  echo "2. Install zsh and setup oh-my-zsh"
+  echo "3. Install WhiteSur GTK Theme"
+  echo "4. Set up Hyprland"
+  echo "5. Exit"
     
   read -p "Enter your choice: " main_choice
     
   case $main_choice in
     1)
-      setup_zsh
+      extra_packages
+      read -n 1 -s -r -p "Press any key to continue..."
       ;;
     2)
+      setup_zsh
+      ;;
+    3)
       whitesur_theme
       read -n 1 -s -r -p "Press any key to continue..."
       ;;
-    3)
+    4)
       # Add code for Option 3 here
       setup_hyprland
       ;;
-    4)
+    5)
       echo "Exiting the program."
       exit 0
       ;;
