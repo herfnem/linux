@@ -61,20 +61,27 @@ neofetch
 
 #MY ALIAS
 alias vscode='code-insiders .'
-alias archlinux='distrobox enter archlinux'
 alias vertpy='python3 -m venv venv && source venv/bin/activate'
 alias gc='git clone'
 alias vim='nvim'
+alias cls='clear && neofetch'
+
+alias hyprconfig='nvim ~/.config/hypr/hyprland.conf'
+alias wbarconfig='nvim ~/.config/waybar/config'
+
+#My Path Alias
+alias download='cd ~/Downloads/'
+alias coding='cd ~/Desktop/Coding/'
 
 #CUSTOM PATHS
-export PATH="/home/anup/SDK/flutter/bin:$PATH"
-export PATH="/home/anup/SDK/node-v18.17.0-linux-x64/bin:$PATH"
+export PATH="/home/neko/Software/node-v18.17.1-linux-x64/bin:$PATH"
 
-export PATH=$PATH:/home/anup/.spicetify
 
 # bun completions
-[ -s "/home/anup/.bun/_bun" ] && source "/home/anup/.bun/_bun"
+[ -s "/home/neko/.bun/_bun" ] && source "/home/neko/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+export PATH=$PATH:/home/neko/.spicetify
