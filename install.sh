@@ -131,7 +131,7 @@ setup_hyprland() {
         read -n 1 -s -r -p "Press any key to continue..."
         ;;
       2)
-        sudo apt-get install -y meson wget build-essential ninja-build cmake-extras cmake gettext gettext-base fontconfig libfontconfig-dev libffi-dev libxml2-dev libdrm-dev libxkbcommon-x11-dev libxkbregistry-dev libxkbcommon-dev libpixman-1-dev libudev-dev libseat-dev seatd libxcb-dri3-dev libvulkan-dev libvulkan-volk-dev  vulkan-validationlayers-dev libvkfft-dev libgulkan-dev libegl-dev libgles2 libegl1-mesa-dev glslang-tools libinput-bin libinput-dev libxcb-composite0-dev libavutil-dev libavcodec-dev libavformat-dev libxcb-ewmh2 libxcb-ewmh-dev libxcb-present-dev libxcb-icccm4-dev libxcb-render-util0-dev libxcb-res0-dev libxcb-xinput-dev xdg-desktop-portal-wlr hwdata check libgtk-3-dev libsystemd-dev xwayland pamixer gsimplecal cava rofi waybar brightnessctl alacritty kitty dunst pulsemixer
+        sudo apt-get install -y meson wget build-essential ninja-build cmake-extras cmake gettext gettext-base fontconfig libfontconfig-dev libffi-dev libxml2-dev libdrm-dev libxkbcommon-x11-dev libxkbregistry-dev libxkbcommon-dev libpixman-1-dev libudev-dev libseat-dev seatd libxcb-dri3-dev libvulkan-dev libvulkan-volk-dev  vulkan-validationlayers-dev libvkfft-dev libgulkan-dev libegl-dev libgles2 libegl1-mesa-dev glslang-tools libinput-bin libinput-dev libxcb-composite0-dev libavutil-dev libavcodec-dev libavformat-dev libxcb-ewmh2 libxcb-ewmh-dev libxcb-present-dev libxcb-icccm4-dev libxcb-render-util0-dev libxcb-res0-dev libxcb-xinput-dev xdg-desktop-portal-wlr hwdata check libgtk-3-dev libsystemd-dev xwayland pamixer gsimplecal cava rofi waybar brightnessctl alacritty kitty dunst pulsemixer playerctl swaybg
         cd backup
         sudo cp 90-brightnessctl.rules /usr/lib/udev/rules.d/ 
         cd ..
@@ -223,6 +223,7 @@ setup_hyprland() {
         ;;
       4)
         cp -r config/* ~/.config/
+        cp -r wallpapers/* ~/Pictures/
         CURRENT_USER=$(whoami)
         sudo gpasswd -a $CURRENT_USER video
         sudo cp backup/90-brightnessctl.rules /usr/lib/udev/rules.d/

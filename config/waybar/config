@@ -11,6 +11,7 @@
         "margin-bottom": -10,
         "margin-top": -2,
         "modules-left": [
+            "hyprland/workspaces",
             "hyprland/window"
         ],
         "modules-right": [
@@ -35,12 +36,6 @@
             "return-type": "json",
             "on-click": "xdg-open https://weather.com/en-IN/weather/today/l/$(location_id)"
         },
-        // End of custom modules //
-        "wlr/workspaces": {
-            "format": "{icon}",
-            "format-active": " {icon} ",
-            "on-click": "activate"
-        },
         "tray": {
             "icon-size": 16,
             "spacing": 8
@@ -53,19 +48,6 @@
             "format-alt": "  {:%d/%m/%Y}",
             "max-length": 25,
             "on-click-right": "gsimplecal"
-        },
-        "cpu": {
-            "format": "󰻠  {usage}%",
-            "format-alt": "󰻠 {avg_frequency} GHz",
-            "on-click-right": "kitty --class system_monitor -e htop",
-            "interval": 1
-        },
-        "memory": {
-            "format": "󰇖  {percentage}%",
-            "format-alt": "󰍛 {used}/{total} GiB",
-            "interval": 1,
-            "on-click-right": "kitty --class system_monitor -e htop",
-            "max-lenght": 35
         },
         "backlight": {
             "device": "intel_backlight",
@@ -175,7 +157,21 @@
             "interval": 1,
             "exec": "~/.config/waybar/modules/spotify.sh",
             "exec-if": "pgrep spotify",
-            "on-click": "playerctl play-pause"
-        }
+            "on-click": "playerctl play-pause",
+            "max-length": 36
+        },
+        "cpu": {
+            "format": "󰻠  {usage}%",
+            "format-alt": "󰻠 {avg_frequency} GHz",
+            "on-click-right": "kitty --class system_monitor -e htop",
+            "interval": 1
+        },
+        "memory": {
+            "format": "󰇖  {percentage}%",
+            "format-alt": "󰍛 {used}/{total} GiB",
+            "interval": 1,
+            "on-click-right": "kitty --class system_monitor -e htop",
+            "max-lenght": 35
+        },
     }
 ]
