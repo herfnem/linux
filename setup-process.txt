@@ -181,7 +181,7 @@ https://github.com/NvChad/NvChad
 #For Ubuntu
 rofi -show drun -normal-window -steal-focus
 ----
-
+https://github.com/neovim/neovim-releases/releases
 
 For Theming: SPACE + T + H
 For Syntax Hyghlghtng: [on vim CLI]: TSInstall <language_name>

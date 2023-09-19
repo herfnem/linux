@@ -91,15 +91,16 @@ whitesur_theme() {
     exit 1
   fi
 
-  sudo ./tweaks.sh -g
+  sudo ./tweaks.sh -g -f monterey
 
   if [ $? -ne 0 ]; then
     echo "Error: Failed to apply WhiteSur GTK Theme tweaks. Exiting."
     exit 1
   fi
-
+  
+  sudo flatpak override --filesystem=xdg-config/gtk-4.0
   cd ..
-  rm -rf WhiteSur-gtk-theme
+  # rm -rf WhiteSur-gtk-theme
   echo "WhiteSur GTK Theme has been installed."
 }
 
@@ -110,8 +111,9 @@ setup_hyprland() {
     echo "1. Add current user to the sudoers list"
     echo "2. Install required packages"
     echo "3. Install Hyprland"
-    echo "4. Copy my config files"
-    echo "5. Back"
+    echo "4. Build and Install waybar"
+    echo "5. Copy my config files"
+    echo "6. Back"
 
     read -p "Enter your choice: " sub_choice
 
@@ -131,7 +133,7 @@ setup_hyprland() {
         read -n 1 -s -r -p "Press any key to continue..."
         ;;
       2)
-        sudo apt-get install -y meson wget build-essential ninja-build cmake-extras cmake gettext gettext-base fontconfig libfontconfig-dev libffi-dev libxml2-dev libdrm-dev libxkbcommon-x11-dev libxkbregistry-dev libxkbcommon-dev libpixman-1-dev libudev-dev libseat-dev seatd libxcb-dri3-dev libvulkan-dev libvulkan-volk-dev  vulkan-validationlayers-dev libvkfft-dev libgulkan-dev libegl-dev libgles2 libegl1-mesa-dev glslang-tools libinput-bin libinput-dev libxcb-composite0-dev libavutil-dev libavcodec-dev libavformat-dev libxcb-ewmh2 libxcb-ewmh-dev libxcb-present-dev libxcb-icccm4-dev libxcb-render-util0-dev libxcb-res0-dev libxcb-xinput-dev xdg-desktop-portal-wlr hwdata check libgtk-3-dev libsystemd-dev xwayland pamixer gsimplecal cava rofi waybar brightnessctl alacritty kitty dunst pulsemixer playerctl swaybg
+        sudo apt-get install -y meson wget build-essential ninja-build cmake-extras cmake gettext gettext-base fontconfig libfontconfig-dev libffi-dev libxml2-dev libdrm-dev libxkbcommon-x11-dev libxkbregistry-dev libxkbcommon-dev libpixman-1-dev libudev-dev libseat-dev seatd libxcb-dri3-dev libvulkan-dev libvulkan-volk-dev  vulkan-validationlayers-dev libvkfft-dev libgulkan-dev libegl-dev libgles2 libegl1-mesa-dev glslang-tools libinput-bin libinput-dev libxcb-composite0-dev libavutil-dev libavcodec-dev libavformat-dev libxcb-ewmh2 libxcb-ewmh-dev libxcb-present-dev libxcb-icccm4-dev libxcb-render-util0-dev libxcb-res0-dev libxcb-xinput-dev xdg-desktop-portal-wlr hwdata check libgtk-3-dev libsystemd-dev xwayland pamixer gsimplecal cava rofi brightnessctl alacritty kitty dunst pulsemixer playerctl swaybg
         cd backup
         sudo cp 90-brightnessctl.rules /usr/lib/udev/rules.d/ 
         cd ..
@@ -222,6 +224,16 @@ setup_hyprland() {
         read -n 1 -s -r -p "Press any key to continue..."
         ;;
       4)
+        sudo apt install -y clang-tidy gobject-introspection libdbusmenu-gtk3-dev libevdev-dev libfmt-dev libgirepository1.0-dev libgtk-3-dev libgtkmm-3.0-dev libinput-dev libjsoncpp-dev libmpdclient-dev libnl-3-dev libnl-genl-3-dev libpulse-dev libsigc++-2.0-dev libspdlog-dev libwayland-dev scdoc upower libxkbregistry-dev cava
+        git clone https://github.com/Alexays/Waybar
+        cd Waybar
+        meson build
+        ninja -C build
+        ninja -C build install
+        cd ..
+        read -n 1 -s -r -p "Press any key to continue..."
+        ;;
+      5)
         cp -r config/* ~/.config/
         cp -r wallpapers/* ~/Pictures/
         CURRENT_USER=$(whoami)
@@ -229,7 +241,7 @@ setup_hyprland() {
         sudo cp backup/90-brightnessctl.rules /usr/lib/udev/rules.d/
         read -n 1 -s -r -p "Press any key to continue..."
         ;;
-      5)
+      6)
         break  # Return to the Main Menu
         ;;
       *)
@@ -237,6 +249,19 @@ setup_hyprland() {
         ;;
     esac
   done
+}
+
+install_flatpak() {
+  sudo apt install flatpak -y
+  sudo apt install gnome-software-plugin-flatpak -y
+  flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+}
+
+install_nvim() {
+  wget https://github.com/neovim/neovim-releases/releases/download/nightly/nvim-linux64.deb
+  sudo apt install ./nvim-linux64.deb
+  sudo apt install python3.11-venv
+  git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
 }
 
 # Main menu
@@ -247,7 +272,9 @@ while true; do
   echo "2. Install zsh and setup oh-my-zsh"
   echo "3. Install WhiteSur GTK Theme"
   echo "4. Set up Hyprland"
-  echo "5. Exit"
+  echo "5. Install Flatpak"
+  echo "6. Install NeoVim and NvChad"
+  echo "7. Exit"
     
   read -p "Enter your choice: " main_choice
     
@@ -264,10 +291,18 @@ while true; do
       read -n 1 -s -r -p "Press any key to continue..."
       ;;
     4)
-      # Add code for Option 3 here
       setup_hyprland
       ;;
     5)
+      install_flatpak
+      echo "REBOOT IS REQUIRED."
+      read -n 1 -s -r -p "Press any key to continue..."
+      ;;
+    6)
+      install_nvim
+      read -n 1 -s -r -p "Press any key to continue..."
+      ;;
+    7)
       echo "Exiting the program."
       exit 0
       ;;
