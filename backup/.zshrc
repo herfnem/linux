@@ -60,11 +60,12 @@ alias lg='exa --icons -l --group-directories-first'
 neofetch
 
 #MY ALIAS
-alias vscode='code-insiders .'
-alias vertpy='python3 -m venv venv && source venv/bin/activate'
+alias vscode='code-insiders'
+alias venv='python3 -m venv venv && source venv/bin/activate'
 alias gc='git clone'
 alias vim='nvim'
 alias cls='clear && neofetch'
+alias sufile='sudo nautilus'
 
 alias hyprconfig='nvim ~/.config/hypr/hyprland.conf'
 alias wbarconfig='nvim ~/.config/waybar/config'
@@ -74,7 +75,7 @@ alias download='cd ~/Downloads/'
 alias coding='cd ~/Desktop/Coding/'
 
 #CUSTOM PATHS
-export PATH="/home/neko/Software/node-v18.17.1-linux-x64/bin:$PATH"
+export PATH="/home/neko/Software/node-v18.18.0-linux-x64/bin:$PATH"
 
 
 # bun completions
