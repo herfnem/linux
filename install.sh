@@ -142,8 +142,8 @@ setup_hyprland() {
       3)
         mkdir hyprland-files
         cd hyprland-files
-        wget https://github.com/hyprwm/Hyprland/releases/download/v0.29.1/source-v0.29.1.tar.gz
-        tar -xvf source-v0.29.1.tar.gz
+        wget https://github.com/hyprwm/Hyprland/releases/download/v0.32.0/source-v0.32.0.tar.gz
+        tar -xvf source-v0.32.0.tar.gz
 
         wget https://gitlab.freedesktop.org/wayland/wayland-protocols/-/releases/1.32/downloads/wayland-protocols-1.32.tar.xz
         tar -xvf wayland-protocols-1.32.tar.xz
@@ -219,7 +219,7 @@ setup_hyprland() {
         sudo apt install libgbm-dev
         chmod a+rw hyprland-source
         cd hyprland-source/
-        sudo make install
+        sudo make && sudo make install
         cd ../..
         read -n 1 -s -r -p "Press any key to continue..."
         ;;
