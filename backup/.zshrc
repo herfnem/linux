@@ -59,6 +59,11 @@ alias lg='exa --icons -l --group-directories-first'
 #ZSH STARTUP APPS
 neofetch
 
+#Package Manager ALIAS
+#alias sudo='sudo '
+#alias apt='\nala'
+#alias dapt='\apt'
+
 #MY ALIAS
 alias vscode='code-insiders'
 alias venv='python3 -m venv venv && source venv/bin/activate'
@@ -73,10 +78,13 @@ alias wbarconfig='nvim ~/.config/waybar/config'
 #My Path Alias
 alias download='cd ~/Downloads/'
 alias coding='cd ~/Desktop/Coding/'
+alias cdtest='cd ~/Downloads/zx'
+
+#Distrobox
+alias archlinux='distrobox enter archlinux'
 
 #CUSTOM PATHS
-export PATH="/home/neko/Software/node-v18.18.0-linux-x64/bin:$PATH"
-
+export PATH="/home/neko/Software/node-v20.9.0-linux-x64/bin:$PATH"
 
 # bun completions
 [ -s "/home/neko/.bun/_bun" ] && source "/home/neko/.bun/_bun"
