@@ -1,0 +1,5 @@
+To create a backup:
+dconf dump / > dconf-settings.ini
+
+To restore a backup:
+dconf load / < dconf-settings.ini

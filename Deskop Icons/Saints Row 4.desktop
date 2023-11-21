@@ -1,7 +1,0 @@
-
-[Desktop Entry]
-Type=Application
-Name=Saints Row 4
-Icon=/home/anup/Games/Saints Row 4/goggame-2037689757.ico
-Exec=env LUTRIS_SKIP_INIT=1 flatpak run net.lutris.Lutris lutris:rungameid/3
-Categories=Game

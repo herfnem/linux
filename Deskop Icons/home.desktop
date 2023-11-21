@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Home
+Exec=xdg-open .
+Type=Application
+Terminal=false
+Icon=/home/neko/Downloads/Setup/icons/desktop.png
