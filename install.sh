@@ -28,7 +28,7 @@ extra_packages() {
         read -n 1 -s -r -p "Press any key to continue..."
         ;;
       2)
-        sudo apt install -y mpv gimp htop git neofetch curl exa rofi nala libfuse2 gufw dconf-editor
+        sudo apt install -y mpv gimp htop git neofetch curl exa rofi nala libfuse2 gufw dconf-editor ntfs-3g build-essential alacritty
         sudo apt install -y tealdeer && tldr -u
         curl -fsSL https://bun.sh/install | bash
         read -n 1 -s -r -p "Press any key to continue..."
@@ -104,7 +104,7 @@ setup_zsh() {
 
         git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-        cp oh-my-zsh/anup.zsh-theme ~/.oh-my-zsh/themes/
+        cp oh-my-zsh/neko.zsh-theme ~/.oh-my-zsh/themes/
 
         if [ $? -ne 0 ]; then
           echo "Error: Failed to copy additional Zsh files. Exiting."
@@ -185,7 +185,6 @@ while true; do
   case $main_choice in
     1)
       extra_packages
-      read -n 1 -s -r -p "Press any key to continue..."
       ;;
     2)
       setup_zsh
