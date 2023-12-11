@@ -1,0 +1,130 @@
+https://forum.manjaro.org/t/configuring-hybrid-gpu-laptop-to-only-use-dgpu-when-requested/76265
+
+
+https://youtu.be/Pn2iUgW3l6w?si=4oC1C3cGv6kelwO-
+
+https://github.com/prasanthrangan/hyprdots
+
+https://www.osside.net/2023/07/02/how-to-enable-wayland-on-arch-linux-nvidia-rtx-gpu/
+
+-------------------
+sudo nano /etc/pacman.conf
+enable: multilib
+ILoveCandy
+Color
+parallel downloads
+-------------------
+
+sudo pacman -S nvidia nvidia-utils nvidia-settings nvidia-prime power-profiles-daemon vulkan-tools
+Reboot
+
+prime-run %command%  ---to run app on gpu
+vkcube ---to see which gpu is selected
+---
+sudo nano /etc/gdm/custom.conf
+Edit: WaylandEnable=true
+---
+sudo nano /etc/mkinitcpio.conf
+MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
+
+sudo mkinitcpio -P
+---
+sudo nano /etc/default/grub
+RUB_CMDLINE_LINUX_DEFAULT="..... nvidia_drm.modeset=1"
+
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+---
+sudo nano /etc/modprobe.d/nvidia.conf
+ADD:
+options nvidia-drm modeset=1
+---
+sudo ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
+
+-------------------
+sudo pacman -S bluez bluez-utils blueman
+---
+sudo nano /etc/bluetooth/main.conf
+AutoEnable=false
+---
+sudo systemctl start bluetooth.service
+sudo systemctl enable bluetooth.service
+
+-------------------
+cd Downloads
+sudo pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+-------------------
+
+
+--noconfirm -> flag to ask for no confirmation during installation
+
+
+gpasswd -a yourusername video
+sudo pacman -S cheese
+
+for steam: per-game properties
+prime-run %command%
+
+
+-----------------------------------------------
+sudo pacman -Sy ufw
+sudo systemctl enable ufw.service
+sudo ufw enable
+sudo systemctl status ufw
+
+-----------------------------------------------
+Mutlimedia Codec
+sudo pacman -S mpv jasper lame libdca libdv gst-libav libtheora libvorbis libxv wavpack x264 xvidcore dvd+rw-tools dvdauthor dvgrab libmad libmpeg2 libdvdcss libdvdread libdvdnav exfat-utils fuse-exfat a52dec faac faad2 flac
+-----------------------------------------------
+Pamac - The GUI package manager of Manjaro
+
+sudo pacman -S pamac-all
+
+
+sudo pacman -S waybar rofi dunst alacritty brightnessctl pamixer pamixer ttf-font-awesome
+
+
+
+-----------------------------------------------
+###AUR:
+google-chrome
+google-chrome-beta
+thorium-browser-bin
+brave-bin
+docker-desktop
+visual-studio-code-bin 
+visual-studio-code-insiders-bin
+xdman-beta-bin
+webapp-manager
+youtube-music-bin
+spotify
+
+------------------
+yay -S google-chrome google-chrome-beta thorium-browser-bin brave-bin visual-studio-code-bin visual-studio-code-insiders-bin xdman-beta-bin webapp-manager youtube-music-bin spotify
+
+------------------
+###PACMAN:
+file-roller
+libreoffice-fresh
+thurnderbird
+mpv
+telegram-desktop
+discord
+neovim
+
+------------------
+###FLATPAK:
+Extension Manager
+Okular
+Obsidian
+Boxes
+Bottles
+Lutris
+Amberol
+Fragments
+
+------------------
+###SNAP:
+https://snapcraft.io/docs/installing-snap-on-arch-linux

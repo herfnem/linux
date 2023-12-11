@@ -1,0 +1,4 @@
+distrobox create --name archlinux --init --image quay.io/toolbx-images/archlinux-toolbox:latest --additional-packages "systemd libpam-systemd"
+
+
+sudo pacman -S neofetch git curl htop neovim nano

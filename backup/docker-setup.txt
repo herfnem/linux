@@ -1,0 +1,14 @@
+DOCKER:
+sudo pacman -S docker docker-compose docker-buildx
+
+sudo systemctl enable docker.service
+sudo systemctl enable docker.socket
+====
+sudo gpasswd -a $USER docker
+sudo usermod -aG docker neko
+cat /etc/group | grep docker
+---
+OUTUT:
+docker:x:136:neko
+---
+sudo chmod 666 /var/run/docker.sock
