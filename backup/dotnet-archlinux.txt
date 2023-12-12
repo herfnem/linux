@@ -1,0 +1,1 @@
+yay -S dotnet-runtime dotnet-sdk aspnet-runtime
