@@ -1,7 +1,9 @@
 #!/bin/bash
 
 extra_packages() {
-  sudo pacman -S mpv git neofetch curl exa jasper lame libdca libdv gst-libav libtheora libvorbis libxv wavpack x264 xvidcore dvd+rw-tools dvdauthor dvgrab libmad libmpeg2 libdvdcss libdvdread libdvdnav exfat-utils fuse-exfat a52dec faac faad2 flac alacritty rofi ttf-font-awesome file-roller libreoffice-fresh thunderbird telegram-desktop discord power-profiles-daemon webp-pixbuf-loader --noconfirm
+  sudo pacman -S mpv git neofetch curl exa jasper lame libdca libdv gst-libav libtheora libvorbis libxv wavpack x264 xvidcore dvd+rw-tools dvdauthor dvgrab libmad libmpeg2 libdvdcss libdvdread libdvdnav exfat-utils fuse-exfat a52dec faac faad2 flac alacritty rofi ttf-font-awesome file-roller libreoffice-fresh thunderbird telegram-desktop discord power-profiles-daemon webp-pixbuf-loader base-devel clang libdbus gtk2 libnotify libgnome-keyring alsa-lib libcap libcups libxtst libxss nss gcc-multilib curl gperf bison python-dbusmock jdk8-openjdk dotnet-runtime dotnet-sdk aspnet-runtime --noconfirm
+  sudo pacman -Syu curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+  curl -fsSL https://bun.sh/install | bash
 }
 
 # Function to set up Zsh and install Oh-My-Zsh

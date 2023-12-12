@@ -1,8 +1,0 @@
-sudo apt install -y virt-manager
-
-sudo adduser $USER libvirt
-
-sudo chown $USER:$USER /var/run/libvirt/libvirt-sock
-
-sudo service libvirtd stop
-sudo service libvirtd start

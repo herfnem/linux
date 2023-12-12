@@ -84,7 +84,11 @@ alias cdtest='cd ~/Downloads/zx'
 alias archlinux='distrobox enter archlinux'
 
 #CUSTOM PATHS
-export PATH="/home/neko/Software/node-v20.9.0-linux-x64/bin:$PATH"
+
+#nvm - Node Version Manager
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # bun completions
 [ -s "/home/neko/.bun/_bun" ] && source "/home/neko/.bun/_bun"
