@@ -1,0 +1,3 @@
+ sudo apt install ntfs-3g
+
+sudo ntfsfix -b -d /dev/sda2
