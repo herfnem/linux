@@ -71,7 +71,7 @@ alias gc='git clone'
 alias vim='nvim'
 alias cls='clear && neofetch'
 alias sufile='sudo nautilus'
-
+alias typing='toipe'
 alias hyprconfig='nvim ~/.config/hypr/hyprland.conf'
 alias wbarconfig='nvim ~/.config/waybar/config'
 
@@ -81,7 +81,13 @@ alias coding='cd ~/Desktop/Coding/'
 alias cdtest='cd ~/Downloads/zx'
 
 #Distrobox
-alias archlinux='distrobox enter archlinux'
+alias debian='distrobox enter debian'
+
+#Tmux
+alias ta='tmux attach'
+alias tls='tmux ls'
+alias tat='tmux attach -t'
+alias tns='tmux new-session -s'
 
 #CUSTOM PATHS
 
